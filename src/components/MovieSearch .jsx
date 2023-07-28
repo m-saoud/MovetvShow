@@ -26,7 +26,7 @@ const MovieSearch = () => {
   const fetchResults = async () => {
     try {
       const apiKey = "36e866e1d09caea1480c8ea9a195b773";
-      const apiUrl = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${query}&append_to_response=release_date`;
+      const apiUrl = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${query}&append_to_response=release_date,vote_average`;
       const response = await axios.get(apiUrl);
       setResults(response.data.results);
     } catch (err) {
@@ -62,7 +62,9 @@ const MovieSearch = () => {
               <h2>Overview</h2>
               <p>Overview : {item.overview} </p>
             </span>
-            {item.release_date && <p>Release Date: {item.release_date}</p>}
+                {item.release_date && <p>Release Date: {item.release_date}</p>}
+                {item.vote_average && <p>Rating: {item.vote_average}</p>}
+
           </div>
         );
       })}

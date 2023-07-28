@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import './MovieSearch.css'
+import "./MovieSearch.css";
 
 const MovieSearch = () => {
   const [query, setQuery] = useState("");
@@ -26,7 +26,7 @@ const MovieSearch = () => {
   const fetchResults = async () => {
     try {
       const apiKey = "36e866e1d09caea1480c8ea9a195b773";
-      const apiUrl = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${query}`;
+      const apiUrl = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${query}&append_to_response=release_date`;
       const response = await axios.get(apiUrl);
       setResults(response.data.results);
     } catch (err) {
@@ -35,10 +35,9 @@ const MovieSearch = () => {
   };
 
   return (
-      <div>
-
-          <form onSubmit={handleSubmit}>
-          <h1>Movie/TV Show Search</h1>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <h1>Movie/TV Show Search</h1>
 
         <input
           type="text"
@@ -46,7 +45,9 @@ const MovieSearch = () => {
           onChange={handleChange}
           placeholder="Search for a movie or TV show"
         />
-        <button type="submit" className="submit">Search</button>
+        <button type="submit" className="submit">
+          Search
+        </button>
       </form>
       {results.map((item) => {
         return (
@@ -57,7 +58,11 @@ const MovieSearch = () => {
               style={{ width: "150px", height: "225px" }}
             />
             <h2>{item.title || item.name}</h2>
-            <p>{item.overview}</p>
+            <span>
+              <h2>Overview</h2>
+              <p>Overview : {item.overview} </p>
+            </span>
+            {item.release_date && <p>Release Date: {item.release_date}</p>}
           </div>
         );
       })}

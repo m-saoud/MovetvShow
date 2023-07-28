@@ -1,5 +1,5 @@
 import React from "react";
-import React, { useState } from 'react';
+import { useState } from "react";
 import axios from "axios";
 
 const MovieSearch = () => {
@@ -14,7 +14,14 @@ const MovieSearch = () => {
     e.preventDefault();
     fetchResults();
   };
-
+  const getImageUrl = (posterPath) => {
+    if (!posterPath) {
+      // Return a placeholder image URL in case the posterPath is missing
+      return "https://via.placeholder.com/150";
+    }
+    const baseUrl = "https://image.tmdb.org/t/p/w185";
+    return `${baseUrl}${posterPath}`;
+  };
   const fetchResults = async () => {
     try {
       const apiKey = "36e866e1d09caea1480c8ea9a195b773";
@@ -37,12 +44,18 @@ const MovieSearch = () => {
         />
         <button type="submit">Search</button>
       </form>
-
       {results.map((item) => {
-        <div key={item.id}>
-          <h2>{item.title || item.name}</h2>
-          <p>{item.overview}</p>
-        </div>;
+        return (
+          <div key={item.id}>
+            <img
+              src={getImageUrl(item.poster_path)}
+              alt={item.title || item.name}
+              style={{ width: "150px", height: "225px" }}
+            />
+            <h2>{item.title || item.name}</h2>
+            <p>{item.overview}</p>
+          </div>
+        );
       })}
     </div>
   );

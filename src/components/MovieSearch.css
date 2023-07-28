@@ -1,0 +1,74 @@
+/* styles.css */
+
+.App {
+    text-align: center;
+    margin-top: 30px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    display: inline;
+    padding: 9px;
+    font-size: 16px;
+    width: 300px;
+    color: #213547;
+
+}
+
+input {
+    position: relative;
+    display:inline-block;
+
+}
+
+.submit {
+    border: 1px solid #21354774;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #213547;
+    background-color: #21354774;
+    margin-left: 2px;
+    cursor: pointer;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.submit:hover {
+    background-color: #21354725;
+    ;
+}
+
+.MovieCard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    justify-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.MovieCard img {
+
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.MovieCard h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.MovieCard p {
+    font-size: 14px;
+    color: #444;
+}

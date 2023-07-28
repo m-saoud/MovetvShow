@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import './MovieSearch.css'
 
 const MovieSearch = () => {
   const [query, setQuery] = useState("");
@@ -34,19 +35,22 @@ const MovieSearch = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+      <div>
+
+          <form onSubmit={handleSubmit}>
+          <h1>Movie/TV Show Search</h1>
+
         <input
           type="text"
           value={query}
           onChange={handleChange}
           placeholder="Search for a movie or TV show"
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="submit">Search</button>
       </form>
       {results.map((item) => {
         return (
-          <div key={item.id}>
+          <div key={item.id} className="MovieCard">
             <img
               src={getImageUrl(item.poster_path)}
               alt={item.title || item.name}

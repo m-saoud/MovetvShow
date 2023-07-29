@@ -60,7 +60,7 @@ const MovieSearch = () => {
             <h2>{item.title || item.name}</h2>
             <span>
               <h2>Overview</h2>
-              <p>Overview : {item.overview} </p>
+              <p> {item.overview} </p>
                 </span>
                 
             {item.release_date && <p>Release Date: {item.release_date}</p>}

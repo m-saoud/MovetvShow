@@ -61,10 +61,21 @@ const MovieSearch = () => {
             <span>
               <h2>Overview</h2>
               <p>Overview : {item.overview} </p>
-            </span>
-                {item.release_date && <p>Release Date: {item.release_date}</p>}
-                {item.vote_average && <p>Rating: {item.vote_average}</p>}
+                </span>
+                
+            {item.release_date && <p>Release Date: {item.release_date}</p>}
 
+            {item.vote_average && (<span> <p className="rating">
+                Rating: {item.vote_average.toFixed(1)}<br/>
+                {Array.from(
+                  { length: Math.floor(item.vote_average / 1.3) },
+                  (_, index) => (
+                    <img key={index} src="public/star.avif" alt="star" />
+                  )
+                )}
+              </p></span>
+             
+            )}
           </div>
         );
       })}

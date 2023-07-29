@@ -72,3 +72,13 @@ input {
     font-size: 14px;
     color: #444;
 }
+/* Rating stars */
+.rating {
+    display: inline-block;
+  }
+  
+  .rating img {
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+  }
